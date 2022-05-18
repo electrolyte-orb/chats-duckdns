@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'system-ui']
+      sans: ['Inter', 'system-ui'],
+      mono: ['Space Mono', 'monospace']
     },
     extend: {},
   },
