@@ -1,6 +1,7 @@
 import { Container } from '@components';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 
 interface HomeProps {
 	buildSHA: string;
@@ -20,9 +21,11 @@ export default function Home({ buildSHA }: HomeProps) {
 					Making Memories. Making{' '}
 					<span className="text-yellow-500">Ducks!</span>
 				</h1>
-				<button className="w-full mt-6 p-2 bg-yellow-500 text-black rounded-lg text-sm font-medium">
-					Get Ducky!
-				</button>
+				<Link href="/get-ducky">
+					<button className="w-full mt-6 p-2 bg-yellow-500 text-black rounded-lg text-sm font-medium">
+						Get Ducky!
+					</button>
+				</Link>
 			</section>
 			<div>
 				Build SHA:{' '}
@@ -35,6 +38,15 @@ export default function Home({ buildSHA }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+	/*
+	 ** For Development only
+	 */
+	if (process.env.NODE_ENV === 'development') {
+		return {
+			props: { buildSHA: 'Dev Mode 🚧' },
+		};
+	}
+
 	const getSiteReq = await fetch(
 		`https://api.netlify.com/api/v1/sites/${process.env.NETLIFY_SITE_ID}`,
 		{
