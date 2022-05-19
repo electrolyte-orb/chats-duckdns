@@ -1,31 +1,48 @@
 import { Container } from '@components';
 import { auth } from 'lib/firebase';
-import { GoogleAuthProvider, signInWithRedirect, User } from 'firebase/auth';
-import ExclamationIcon from '@heroicons/react/solid/ExclamationIcon';
+import {
+	GoogleAuthProvider,
+	onAuthStateChanged,
+	signInWithPopup,
+	User,
+} from 'firebase/auth';
 import XCircleIcon from '@heroicons/react/solid/XCircleIcon';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-export default function GetDucky() {
-	const [user, setUser] = useState<User>();
-	const [error, setError] = useState();
-	const [loading, setLoading] = useState<boolean>(false);
+export default function GetDucky({
+	setGlobalUser,
+}: {
+	setGlobalUser: Dispatch<SetStateAction<User | null>>;
+}) {
+	const router = useRouter();
+	const [error, setError] = useState<any>();
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
-		if (auth.currentUser) {
-			setUser(auth.currentUser);
-		}
-	});
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			setGlobalUser(user);
+			setLoading(false);
 
-	function handleSignIn() {
+			if (user) router.push('/chat');
+		});
+
+		return () => {
+			unsubscribe();
+		};
+	}, []);
+
+	async function handleSignIn() {
 		setLoading(true);
 		const provider = new GoogleAuthProvider();
 
-		signInWithRedirect(auth, provider)
+		signInWithPopup(auth, provider)
 			.catch((err) => {
 				setError(err);
 			})
 			.finally(() => setLoading(false));
 	}
+
 	return (
 		<Container>
 			<div className="min-h-screen">
@@ -41,21 +58,17 @@ export default function GetDucky() {
 						Firebase
 					</div>
 				</div>
-				{user ? (
-					<h2 className="text-2xl text-white">You are already in!</h2>
-				) : (
-					<button
-						onClick={handleSignIn}
-						className={
-							'py-2 font-medium rounded-xl block w-full focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-yellow-500 transition ' +
-							(loading
-								? 'bg-yellow-800 text-yellow-500'
-								: 'bg-yellow-500 text-black')
-						}
-					>
-						{loading ? 'Signing In' : 'Sign In With Google'}
-					</button>
-				)}
+				<button
+					onClick={handleSignIn}
+					className={
+						'py-2 font-medium rounded-xl block w-full focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-yellow-500 transition ' +
+						(loading
+							? 'bg-yellow-800 text-yellow-500 animate-pulse'
+							: 'bg-yellow-500 text-black')
+					}
+				>
+					{loading ? 'Please Wait' : 'Sign In With Google'}
+				</button>
 				{error && (
 					<div className="bg-red-500 bg-opacity-10 border border-red-500 p-4 text-xs rounded-xl font-bold font-mono text-red-500 flex items-center mt-4">
 						<XCircleIcon className="h-10 mr-4 animate-pulse" />

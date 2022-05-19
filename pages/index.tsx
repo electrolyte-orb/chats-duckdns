@@ -22,7 +22,7 @@ export default function Home({ buildSHA }: HomeProps) {
 					<span className="text-yellow-500">Ducks!</span>
 				</h1>
 				<Link href="/get-ducky">
-					<button className="w-full mt-6 p-2 bg-yellow-500 text-black rounded-lg text-sm font-medium">
+					<button className="w-full mt-6 p-2 bg-yellow-500 text-black rounded-xl font-medium focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-yellow-500">
 						Get Ducky!
 					</button>
 				</Link>
