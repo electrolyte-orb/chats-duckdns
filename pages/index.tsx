@@ -55,14 +55,8 @@ export const getStaticProps: GetStaticProps = async () => {
 			},
 		}
 	);
+
 	const getSite = await getSiteReq.json();
-	if (typeof getSite.code === 'number') {
-		return {
-			props: {
-				buildSHA: 'Not Configured :(',
-			},
-		};
-	}
 	const getBuildReq = await fetch(
 		`https://api.netlify.com/api/v1/builds/${getSite.published_deploy.build_id}`,
 		{

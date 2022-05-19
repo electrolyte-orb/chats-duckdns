@@ -1,7 +1,10 @@
 import { Container } from '@components';
+import { useRouter } from 'next/router';
 
 export default function Footer() {
-	return (
+	const router = useRouter();
+
+	return router.asPath === '/chat' ? null : (
 		<div className="bg-gray-900">
 			<Container>
 				<div className="flex gap-3 font-bold">
