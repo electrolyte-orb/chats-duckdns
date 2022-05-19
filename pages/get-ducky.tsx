@@ -9,7 +9,6 @@ import {
 import XCircleIcon from '@heroicons/react/solid/XCircleIcon';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 export default function GetDucky({
 	setGlobalUser,
@@ -53,7 +52,7 @@ export default function GetDucky({
 			>
 				{loading ? (
 					<div className="absolute top-52 h-36 w-36 bg-gray-800 border border-gray-600 rounded-full animate-pulse grid place-content-center">
-						<img src="https://raw.githubusercontent.com/SamHerbert/SVG-Loaders/master/svg-loaders/ball-triangle.svg"></img>
+						<img src="https://raw.githubusercontent.com/SamHerbert/SVG-Loaders/master/svg-loaders/oval.svg"></img>
 					</div>
 				) : (
 					<>
