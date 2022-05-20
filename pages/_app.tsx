@@ -2,11 +2,8 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Navbar, Wrapper, Footer } from '@components';
 import Head from 'next/head';
-import { useState } from 'react';
-import { User } from 'firebase/auth';
 
 function MyApp({ Component, pageProps }: AppProps) {
-	const [globalUser, setGlobalUser] = useState<User | null>(null);
 	return (
 		<>
 			<Head>
@@ -18,8 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 				/>
 			</Head>
 			<Wrapper>
-				<Navbar globalUser={globalUser} />
-				<Component {...pageProps} setGlobalUser={setGlobalUser} />
+				<Navbar />
+				<Component {...pageProps} />
 				<Footer />
 			</Wrapper>
 		</>

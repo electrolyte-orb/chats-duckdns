@@ -33,6 +33,11 @@ export default function Home({ buildSHA }: HomeProps) {
 					{buildSHA}
 				</span>
 			</div>
+			<img
+				src="https://cdn.jsdelivr.net/gh/SamHerbert/SVG-Loaders/svg-loaders/oval.svg"
+				alt="dummy"
+				style={{ display: 'inline-block', height: '0px', width: '0px' }}
+			/>
 		</Container>
 	);
 }

@@ -1,15 +1,11 @@
-import { User, signOut } from 'firebase/auth';
-import { auth } from 'lib/firebase';
 import Link from 'next/link';
 import CogIcon from '@heroicons/react/solid/CogIcon';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from 'lib/firebase';
 
-interface NavbarProps {
-	globalUser: User | null;
-}
-export default function Navbar({ globalUser }: NavbarProps) {
-	async function handleSignOut() {
-		await signOut(auth);
-	}
+export default function Navbar() {
+	const [user] = useAuthState(auth);
+
 	return (
 		<div className="sticky top-0 flex items-center max-w-screen z-30 bg-gray-500 bg-opacity-30 backdrop-blur border-b-2 border-gray-600 h-16">
 			<div className="container mx-auto p-4 flex items-center">
@@ -19,12 +15,9 @@ export default function Navbar({ globalUser }: NavbarProps) {
 					</div>
 				</Link>
 				<div className="ml-auto flex items-center">
-					{globalUser && (
+					{user && (
 						<Link href="/account">
-							<button
-								onClick={handleSignOut}
-								className="text-white text-sm flex items-center font-medium p-1"
-							>
+							<button className="text-white text-sm flex items-center font-medium p-1">
 								<CogIcon className="h-5 inline-block" />
 							</button>
 						</Link>

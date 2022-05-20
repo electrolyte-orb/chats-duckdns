@@ -1,46 +1,44 @@
-import { Container } from '@components';
+import { Container, Loader } from '@components';
 import { auth } from 'lib/firebase';
-import {
-	GoogleAuthProvider,
-	onAuthStateChanged,
-	signInWithPopup,
-	User,
-} from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import XCircleIcon from '@heroicons/react/solid/XCircleIcon';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useEffect, useState } from 'react';
 
-export default function GetDucky({
-	setGlobalUser,
-}: {
-	setGlobalUser: Dispatch<SetStateAction<User | null>>;
-}) {
-	const router = useRouter();
+export default function GetDucky() {
+	const [user, authLoading] = useAuthState(auth);
 	const [error, setError] = useState<any>();
 	const [loading, setLoading] = useState<boolean>(true);
 
+	const router = useRouter();
+
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			setGlobalUser(user);
+		if (authLoading === false) {
 			setLoading(false);
+		}
+	}, [authLoading]);
 
-			if (user) router.push('/chat');
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	}, []);
+	useEffect(() => {
+		if (user) {
+			router.replace('/chat');
+			setLoading(false);
+		}
+	}, [user]);
 
 	async function handleSignIn() {
 		setLoading(true);
-		const provider = new GoogleAuthProvider();
+		setError(null);
 
-		signInWithPopup(auth, provider)
-			.catch((err) => {
-				setError(err);
-			})
-			.finally(() => setLoading(false));
+		const provider = new GoogleAuthProvider();
+		const result = await signInWithPopup(auth, provider)
+			.catch((err) => setError(err))
+			.finally(() => {
+				setLoading(false);
+			});
+		if (result) {
+			router.replace('/chat');
+		}
 	}
 
 	return (
@@ -51,9 +49,7 @@ export default function GetDucky({
 				}
 			>
 				{loading ? (
-					<div className="absolute top-52 h-36 w-36 bg-gray-800 border border-gray-600 rounded-full animate-pulse grid place-content-center">
-						<img src="https://raw.githubusercontent.com/SamHerbert/SVG-Loaders/master/svg-loaders/oval.svg"></img>
-					</div>
+					<Loader />
 				) : (
 					<>
 						<h1 className="text-white font-bold text-5xl my-8">
