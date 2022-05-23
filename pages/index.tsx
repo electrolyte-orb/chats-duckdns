@@ -9,11 +9,18 @@ interface HomeProps {
 
 export default function Home({ buildSHA }: HomeProps) {
 	return (
-		<Container>
+		<div
+			className="p-4"
+			style={{
+				backgroundImage: "url('./forest-5375005_1920.jpg')",
+				backgroundAttachment: 'fixed',
+				backgroundPosition: '150% 0%',
+			}}
+		>
 			<Head>
 				<title>Chats Duck</title>
 			</Head>
-			<section className="relative mt-4 min-h-screen">
+			<section className="relative mt-8 min-h-screen ">
 				<h3 className="text-center text-sm font-medium tracking-widest">
 					MESSAGING MADE EASY
 				</h3>
@@ -38,7 +45,7 @@ export default function Home({ buildSHA }: HomeProps) {
 				alt="dummy"
 				style={{ display: 'inline-block', height: '0px', width: '0px' }}
 			/>
-		</Container>
+		</div>
 	);
 }
 
