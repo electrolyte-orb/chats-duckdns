@@ -17,7 +17,7 @@ export default function Account() {
 
 	useEffect(() => {
 		if (loading === false && user === null) router.replace('/');
-	}, [user]);
+	}, [user, loading]);
 
 	function handleSignOut() {
 		signOut(auth).catch(setExternalError);
