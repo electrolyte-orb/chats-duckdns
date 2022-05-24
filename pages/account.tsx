@@ -16,6 +16,7 @@ export default function Account() {
 	const router = useRouter();
 
 	useEffect(() => {
+		console.debug('[DEBUG]', user);
 		if (loading === false && user === null) router.replace('/');
 	}, [user, loading]);
 
