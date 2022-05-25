@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
-import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
-import LogoutIcon from '@heroicons/react/outline/LogoutIcon';
-import TrashIcon from '@heroicons/react/outline/TrashIcon';
+import ExternalLinkIcon from '@heroicons/react/solid/ExternalLinkIcon';
+import LogoutIcon from '@heroicons/react/solid/LogoutIcon';
+import TrashIcon from '@heroicons/react/solid/TrashIcon';
 import { deleteUser, signOut } from 'firebase/auth';
 
 export default function Account() {
@@ -16,9 +16,8 @@ export default function Account() {
 	const router = useRouter();
 
 	useEffect(() => {
-		console.debug('[DEBUG]', user);
 		if (loading === false && user === null) router.replace('/');
-	}, [user, loading]);
+	}, [loading]);
 
 	function handleSignOut() {
 		signOut(auth).catch(setExternalError);
@@ -57,28 +56,28 @@ export default function Account() {
 									We are not authorized to change Google Account settings.
 								</h1>
 								<Link href="https://myaccount.google.com/">
-									<button className="bg-blue-500 rounded-xl p-4 flex justify-between items-center w-full text-white font-medium mt-4">
-										Google Account settings
-										<ExternalLinkIcon className="h-4" />
+									<button className="bg-blue-500 rounded-xl py-4 px-14 flex justify-between items-center w-full text-white font-medium mt-4">
+										Google Account
+										<ExternalLinkIcon className="h-5" />
 									</button>
 								</Link>
 								<h1 className="text-lg font-bold text-red-500 mt-8">
 									Sign Out or Delete Account
 								</h1>
-								<div className="grid gap-4 grid-cols-2">
+								<div className="grid gap-4 grid-cols-1 mt-4">
 									<button
 										onClick={handleSignOut}
-										className="bg-gray-500 rounded-xl p-4 flex justify-between items-center w-full text-white font-medium mt-4"
+										className="bg-gray-800 rounded-xl py-4 px-14 flex justify-between items-center w-full text-white font-medium focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 focus:ring-offset-black transition"
 									>
 										Sign Out
-										<LogoutIcon className="h-4" />
+										<LogoutIcon className="h-5" />
 									</button>
 									<button
 										onClick={handleDelete}
-										className="bg-red-500 rounded-xl p-4 flex justify-between items-center w-full text-white font-medium mt-4"
+										className="bg-red-500 rounded-xl py-4 px-14 flex justify-between items-center w-full text-white font-medium focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-black transition"
 									>
 										Delete Account
-										<TrashIcon className="h-4" />
+										<TrashIcon className="h-5" />
 									</button>
 								</div>
 								{error && (

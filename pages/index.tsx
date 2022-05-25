@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import ArrowNarrowRightIcon from '@heroicons/react/solid/ArrowNarrowRightIcon';
 
 interface HomeProps {
 	buildSHA: string;
@@ -28,8 +29,9 @@ export default function Home({ buildSHA }: HomeProps) {
 					<span className="text-yellow-500">Ducks!</span>
 				</h1>
 				<Link href="/get-ducky">
-					<button className="w-full mt-6 p-2 bg-yellow-500 text-black rounded-xl font-medium focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-yellow-500">
-						Get Ducky!
+					<button className="flex items-center w-full mt-6 py-4 px-14 bg-gray-100 text-yellow-600 rounded-lg font-bold focus:ring-4 focus:ring-gray-200 transition shadow-md">
+						Get Ducky
+						<ArrowNarrowRightIcon className="h-6 ml-auto" />
 					</button>
 				</Link>
 			</section>
