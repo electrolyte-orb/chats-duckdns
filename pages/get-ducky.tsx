@@ -1,7 +1,6 @@
-import { Container, Loader } from '@components';
+import { Container, Loader, ErrorMsg } from '@components';
 import { auth } from 'lib/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import XCircleIcon from '@heroicons/react/solid/XCircleIcon';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect, useState } from 'react';
@@ -70,12 +69,7 @@ export default function GetDucky() {
 						>
 							Sign In With Google
 						</button>
-						{error && (
-							<div className="bg-red-500 bg-opacity-10 border border-red-500 p-4 text-xs rounded-xl font-bold font-mono text-red-500 flex items-center mt-4">
-								<XCircleIcon className="h-10 mr-4 animate-pulse" />
-								An error occured: {new String(error)}
-							</div>
-						)}
+						{error && <ErrorMsg error={error} />}
 					</>
 				)}
 			</div>

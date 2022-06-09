@@ -1,4 +1,4 @@
-import { Container, Loader } from '@components';
+import { Container, ErrorMsg, Loader } from '@components';
 import { auth } from 'lib/firebase';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -17,7 +17,7 @@ export default function Account() {
 
 	useEffect(() => {
 		if (loading === false && user === null) router.replace('/');
-	}, [loading]);
+	}, [loading, user]);
 
 	function handleSignOut() {
 		signOut(auth).catch(setExternalError);
@@ -80,17 +80,9 @@ export default function Account() {
 										<TrashIcon className="h-5" />
 									</button>
 								</div>
-								{error && (
-									<div className="bg-red-500 text-black p-4 rounded-lg mt-4">
-										Error Occured: {error.message}
-									</div>
-								)}
+								{error && <ErrorMsg error={error} />}
 
-								{externalError && (
-									<div className="bg-red-500 text-black p-4 rounded-lg mt-4">
-										External Error: {new String(externalError)}
-									</div>
-								)}
+								{externalError && <ErrorMsg error={error} />}
 							</div>
 						</section>
 					</>

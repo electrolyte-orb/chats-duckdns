@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default function Footer() {
 	const router = useRouter();
 
-	return router.asPath === '/chat' ? null : (
+	return router.asPath === '/chat' || router.asPath === '/' ? null : (
 		<div className="bg-gray-900">
 			<Container>
 				<div className="flex gap-3 font-bold">
