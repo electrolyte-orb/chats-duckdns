@@ -17,7 +17,7 @@ export default function Home() {
 					Frictionless Experience
 				</div>
 				<Link href="/get-ducky">
-					<button className="leading-none mt-12 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
+					<button className="leading-none mt-12 w-full block rounded-xl bg-white text-black py-3 text-base font-medium">
 						Get Started
 					</button>
 				</Link>
@@ -74,7 +74,7 @@ export default function Home() {
 							There{"'"}s nothing to wait for:
 						</p>
 						<Link href="/get-ducky">
-							<button className="leading-none mt-5 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
+							<button className="leading-none mt-5 w-full block rounded-xl bg-white text-black py-3 text-base font-medium">
 								Get Started
 							</button>
 						</Link>
