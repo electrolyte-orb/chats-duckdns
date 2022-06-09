@@ -66,7 +66,7 @@ export default function Home() {
 							servers are a breeze and AWS Lambda is irrefutable at any scale.
 						</p>
 					</div>
-					<div className="mt-14">
+					<div className="mt-16">
 						<p className="mt-6 text-left leading-snug text-white font-medium">
 							There{"'"}s nothing to wait for:
 						</p>

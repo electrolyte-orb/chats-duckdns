@@ -7,11 +7,11 @@ export default function Footer() {
 	const router = useRouter();
 
 	return router.asPath === '/chat' ? null : (
-		<div className="bg-gray-900 mt-20 py-4">
+		<div className="bg-gray-900 text-white mt-20 py-4">
 			<Container>
 				<div className="flex">
 					<Image src="/Union.svg" width={34.43} height={22}></Image>
-					<span className="text-white ml-2 tracking-tight">Duck</span>
+					<span className="ml-2 tracking-tight">Duck</span>
 				</div>
 				<div className="mt-6">
 					Open Open Source Software by
