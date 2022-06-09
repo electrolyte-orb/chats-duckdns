@@ -30,7 +30,7 @@ export default function Home() {
 						<h2 className="text-white font-bold leading-normal mt-6 text-xl text-center">
 							Uses Google{"'"}s Encryption <br /> Algorithm
 						</h2>
-						<p className="mt-6 text-left leading-snug">
+						<p className="mt-6 text-left">
 							Firebase Firestore encrypts your data with advanded encryption
 							used by other Google Services.
 						</p>
@@ -45,7 +45,7 @@ export default function Home() {
 						<h2 className="text-white font-bold leading-normal mt-6 text-xl text-center">
 							Built on the shoulders of Open <br /> Source Softwares
 						</h2>
-						<p className="mt-6 text-left leading-snug">
+						<p className="mt-6 text-left">
 							OSS software are free and open source codes that powers almost
 							anything that is electronic.
 						</p>
@@ -61,7 +61,7 @@ export default function Home() {
 							Next.js with Netlify and AWS <br /> Lambda is the secret behing
 							<br /> {'"'}Seamless Interaction{'"'}
 						</h2>
-						<p className="mt-6 text-left leading-snug">
+						<p className="mt-6 text-left">
 							Next.js supercharges React to its max. Netlify{"'"}s crazy fast
 							servers are a breeze and AWS Lambda is irrefutable at any scale.
 						</p>

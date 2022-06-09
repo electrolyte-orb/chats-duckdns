@@ -8,7 +8,7 @@ export default function Navbar() {
 	const [user] = useAuthState(auth);
 
 	return (
-		<div className="sticky top-0 flex items-center max-w-screen z-30 bg-black border-b-[1pt] border-white h-12">
+		<div className="sticky top-0 flex items-center max-w-screen z-30 bg-black border-b border-white h-12">
 			<div className="container mx-auto p-4 flex items-center">
 				<Link href="/">
 					<Image src="/Union.svg" width={34.43} height={22}></Image>
