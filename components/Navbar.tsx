@@ -18,7 +18,7 @@ export default function Navbar() {
 						className=""
 					></Image>
 				</Link>
-				<div className="text-white ml-2">Duck</div>
+				<div className="text-white ml-2 tracking-tight">Duck</div>
 				<div className="ml-auto flex items-center">
 					{user && (
 						<Link href="/account">
