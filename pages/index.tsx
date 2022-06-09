@@ -68,7 +68,7 @@ export default function Home() {
 					</div>
 					<div className="mt-14">
 						<p className="mt-6 text-left leading-snug text-white font-medium">
-							There's nothing to wait for:
+							There{"'"}s nothing to wait for:
 						</p>
 						<button className="mt-5 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
 							Get Started
