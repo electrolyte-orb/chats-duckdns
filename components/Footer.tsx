@@ -7,7 +7,7 @@ export default function Footer() {
 	const router = useRouter();
 
 	return router.asPath === '/chat' ? null : (
-		<div className="bg-gray-900 text-white mt-20 py-4">
+		<div className="bg-gray-900 text-white py-4">
 			<Container>
 				<div className="flex">
 					<Image src="/Union.svg" width={34.43} height={22}></Image>

@@ -4,6 +4,8 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import siginPopupImage from '../public/sign_in_popup.svg';
 
 export default function GetDucky() {
 	const [user, authLoading] = useAuthState(auth);
@@ -42,37 +44,35 @@ export default function GetDucky() {
 
 	return (
 		<Container>
-			<div
-				className={
-					'min-h-screen ' + (loading ? 'relative grid place-items-center' : '')
-				}
-			>
+			<div className={loading ? 'relative grid place-items-center' : ''}>
 				{loading ? (
 					<Loader />
 				) : (
 					<>
-						<h1 className="text-white font-bold text-5xl my-8">
-							Login to <span className="text-yellow-500">continue.</span>
+						<div className="my-16">
+							<Image src={siginPopupImage} layout="responsive"></Image>
+						</div>
+
+						<h1 className="text-white text-center text-[40px] font-bold tracking-tight leading-tight">
+							Login
 						</h1>
-						<div className="font-mono italic text-sm p-4 rounded-lg my-16 bg-gradient-to-br from-transparent via-gray-900 to-transparent border border-gray-700">
+
+						<div className="mt-10 font-medium leading-normal tracking-normal">
 							If you are building a web app, the easiest way to authenticate
 							your users with Firebase using their Google Accounts is to handle
 							the sign-in flow with the Firebase JavaScript SDK.
-							<br />
-							<div className="text-yellow-500 mt-2 font-bold text-right">
-								Firebase
+							<div className="text-right font-bold text-white italic">
+								Firebase docs
 							</div>
 						</div>
-						<button
-							onClick={handleSignIn}
-							className="py-2 font-medium rounded-xl block w-full focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-yellow-500 transition bg-yellow-500 text-black"
-						>
+
+						<button className="py-3 bg-white text-black font-medium rounded-xl block w-full mt-16 leading-none">
 							Sign In With Google
 						</button>
-						{error && <ErrorMsg error={error} />}
 					</>
 				)}
 			</div>
+			<div className="h-20"></div>
 		</Container>
 	);
 }

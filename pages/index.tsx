@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
 	return (
@@ -15,9 +16,11 @@ export default function Home() {
 				<div className="text-white font-bold tracking-tight leading-none mt-3 text-xl text-center">
 					Frictionless Experience
 				</div>
-				<button className="mt-12 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
-					Get Started
-				</button>
+				<Link href="/get-ducky">
+					<button className="leading-none mt-12 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
+						Get Started
+					</button>
+				</Link>
 			</section>
 			<section className="mt-9">
 				<div className="text-center">
@@ -70,12 +73,16 @@ export default function Home() {
 						<p className="mt-6 text-left leading-snug text-white font-medium">
 							There{"'"}s nothing to wait for:
 						</p>
-						<button className="mt-5 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
-							Get Started
-						</button>
+						<Link href="/get-ducky">
+							<button className="leading-none mt-5 w-full block rounded-xl bg-white text-black py-2 text-base font-medium">
+								Get Started
+							</button>
+						</Link>
 					</div>
 				</div>
 			</section>
+
+			<div className="h-[72px]"></div>
 		</div>
 	);
 }
