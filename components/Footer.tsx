@@ -27,7 +27,7 @@ export default function Footer() {
 
 				<div className="mt-6 mx-auto w-1/2 flex items-center text-xs font-medium text-center px-4 py-2 border border-white rounded-xl">
 					All systems Normal
-					<div className="h-1 w-1 rounded-full bg-green-500 ml-auto relative before:absolute before:h-2 before:w-2 before:rounded-full before:bg-green-500 before:bg-opacity-50 before:-top-0.5 before:-left-0.5"></div>
+					<div className="h-2 w-2 rounded-full bg-green-500 ml-auto relative before:absolute before:h-3 before:w-3 before:rounded-full before:bg-green-500 before:bg-opacity-50 before:-top-0.5 before:-left-0.5"></div>
 				</div>
 			</Container>
 		</div>
