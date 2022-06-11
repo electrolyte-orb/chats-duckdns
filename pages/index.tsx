@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import ChevronRightIcon from '@heroicons/react/outline/ChevronRightIcon';
 
 export default function Home() {
 	return (
-		<div className="p-4">
+		<div className="p-5">
 			<Head>
 				<title>Chats Duck</title>
 			</Head>
@@ -17,12 +18,13 @@ export default function Home() {
 					Frictionless Experience
 				</div>
 				<Link href="/get-ducky">
-					<button className="leading-none mt-12 w-full block rounded-xl bg-white text-black py-3 text-base font-medium">
+					<button className="leading-none mt-12 w-full flex items-center justify-center rounded-lg bg-white text-black p-4 text-base font-medium">
 						Get Started
+						<ChevronRightIcon className="h-4 w-4 inline-block ml-1 stroke-[2pt]" />
 					</button>
 				</Link>
 			</section>
-			<section className="mt-9">
+			<section className="mt-16">
 				<div className="text-center">
 					<div>
 						<span className="text-white font-bold relative mt-28 h-6 w-6 inline-grid rounded-full text-xs leading-none place-items-center bg-gradient-to-r from-blue-700 to-blue-500">
@@ -74,15 +76,16 @@ export default function Home() {
 							There{"'"}s nothing to wait for:
 						</p>
 						<Link href="/get-ducky">
-							<button className="leading-none mt-5 w-full block rounded-xl bg-white text-black py-3 text-base font-medium">
+							<button className="leading-none mt-4 w-full flex items-center justify-center rounded-lg bg-white text-black p-4 text-base font-medium">
 								Get Started
+								<ChevronRightIcon className="h-4 w-4 inline-block ml-1 stroke-[2pt]" />
 							</button>
 						</Link>
 					</div>
 				</div>
 			</section>
 
-			<div className="h-[72px]"></div>
+			<div className="h-[76px]"></div>
 		</div>
 	);
 }
